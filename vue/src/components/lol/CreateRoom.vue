@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <v-app id="inspire" dark>
+
     <form class="ma-4">
       <v-text-field
         label="카드네임"
@@ -14,6 +14,11 @@
         <v-container fluid>
           <v-row>
             <v-col cols="12" sm="6" md="6">
+             <v-radio-group v-model="row" row>
+        <v-radio label="개인/2인랭크게임" value="rank" ></v-radio>
+        <v-radio label="칼바람나락" value="kal"></v-radio>
+      </v-radio-group>
+      <div style="border:1px solid black"></div>
               <v-radio-group v-model="ex8" column>
                 <v-radio
                   label="브론즈"
@@ -45,7 +50,9 @@
                   color="error"
                   value="error"
                 ></v-radio>
+                
               </v-radio-group>
+              
             </v-col>
           </v-row>
         </v-container>
@@ -56,14 +63,15 @@
       <v-btn @click="lol()">방생성</v-btn>
       <v-btn @click="lol()">방취소</v-btn>
     </form>
-  </v-app>
+
 </div>
 </template>
 <script>
 export default{
   data(){
     return{
-      items: ['실버', '브론즈', '골드', '플레티넘']
+      items: ['실버', '브론즈', '골드', '플레티넘'],
+      row:'rank'
     }
   },
   methods:{

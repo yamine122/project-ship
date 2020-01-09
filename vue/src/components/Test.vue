@@ -1,5 +1,4 @@
-/* 최초 롤 게시판 */
-
+<!-- 최초 롤게시판 -->
 <template>
 <div id="app">
   <v-app id="inspire">
@@ -14,7 +13,7 @@
      <div>
         <v-btn class="float-right" @click="createroom()">방만들기</v-btn>
         <v-btn class="float-right" @click="joinroom()">참여하기</v-btn>
-        <v-btn class="float-right" @click="test()">ddd</v-btn>
+        
       </div>
    
   </v-app>
@@ -98,9 +97,6 @@ export default {
       },
       joinroom(){
         this.$router.push({path:'/joinRoom'})
-      },
-      test(){
-        this.$router.push({path:'/test'})
       }
     }
   

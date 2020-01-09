@@ -1,0 +1,17 @@
+<template>
+<div>
+      <Chat 
+       :participants="participants"
+       :myself="myself"
+       :messages="messages"
+       :onType="onType(event)"
+       :onMessageSubmit="onMessageSubmit(message)"
+       :chatTitle="chatTitle"
+       :placeholder="placeholder"
+       :colors="colors"
+       :borderStyle="borderStyle"
+       :hideCloseButton="hideCloseButton"
+       :closeButtonIconSize="closeButtonIconSize"
+       :submitIconSize="submitIconSize"/>
+   </div> 
+</template>

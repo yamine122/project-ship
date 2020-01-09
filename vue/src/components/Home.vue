@@ -1,21 +1,32 @@
 <template>
-<div id="app">
+<div id="app" >
 <layout>
    <template #header="h" >
     <v-app id="inspire">
   <!-- --------------------------------------- 네비 ------------------------------------------ -->
       <div>
-        <v-toolbar color="#3F51B5">
-          <v-toolbar-title class="white--text" style="margin-left:230px" @click="home()"> 
-            <v-icon large color="white">mdi-anchor</v-icon>
+        <v-toolbar color="#3F51B5" :src="'https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg'">
+          <v-toolbar-title class="white--text" style="margin-left:230px;" @click="home()" > 
+            <v-icon large color="white">mdi-vuetify</v-icon>
               SHIP 
           </v-toolbar-title>
+
         <v-spacer></v-spacer>
-          <v-toolbar-items style="margin-right:325px">
-            <v-btn text class="white--text" @click="mypage()">MY PAGE</v-btn>
-            <v-btn text class="white--text" @click="logout()">LOGOUT</v-btn>
-            <v-btn text class="white--text" @click="lol()">LOL</v-btn>
-            <v-btn text class="white--text" @click="futsal()">FUTSAL</v-btn>
+          <v-toolbar-items  style="margin-right:325px;" >
+            <v-btn text style="font-size:15px" class="white--text" @click="test()"   >TEST</v-btn>
+            <v-btn hover text style="font-size:15px" class="white--text" @click="mypage()"   >MY PAGE</v-btn>
+            <v-btn text style="font-size:15px" class="white--text" @click="logout()">LOGOUT</v-btn>
+
+            <!-- <v-overflow-btn :items="contents" label="CONTENTS" class="white--text"></v-overflow-btn> -->
+
+            <v-btn text style="font-size:15px" class="white--text" @click="lol()">LOL</v-btn>
+            <v-badge :value="hover" color="deep-purple accent-4" left offset-x="100" offset-y="20"
+                      content="9999+" transition="slide-x-transition">
+              <v-hover v-model="hover">
+                  <v-btn text style="font-size:15px;margin-top:13px" class="white--text" @click="futsal()">FUTSAL</v-btn>
+              </v-hover>
+            </v-badge>
+
             <!-- <v-col class="d-flex" cols="6" sm="4">
               <v-select :items="items" label="CONTENTS" class="white--text"></v-select>
             </v-col> -->
@@ -43,7 +54,7 @@
   </template>
    <!-- --------------------- 사이드 바  ------------------------- -->
 <template #content ="c">
-  <div id="app" style="width:1400px; height:730px" >
+  <div id="app" style="width:1400px;height:700px" >
     <v-app id="inspire">
         <v-card height="700px"  >
           <v-navigation-drawer absolute temperate left width="20%" >
@@ -74,7 +85,6 @@
       <!-- ----------------------------------------컨텐츠------------------------------------------ -->
         <v-navigation-drawer absolute right width="80%" height="auto" >
           <template>
-
             <router-view></router-view>
           </template>
         </v-navigation-drawer>
@@ -100,17 +110,18 @@ export default {
   },
   data(){
    return{
-    //  icons: {mdiAccount},
+     contents: [
+        { text: 'LOL' },
+        { text: 'FUTSAL' },
+      ],
       sides: [
-          { title: 'Home', icon: 'mdi-home' },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Users', icon: 'mdi-account-group-outline' },
+          { title: 'Home', icon: 'mdi-home', link:'/'},
           { title: '구장 등록', icon: 'mdi-account-group-outline', link:'/register' },
-          { title: '신고게시판', icon: 'mdi-account-group-outline' },
-          { title: '수익 관리', icon: 'mdi-account-group-outline' },
+          { title: '회원 관리', icon: 'mdi-account-group-outline', link:'/membermanage' },
         ],
       state:store.state,
       items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      hover: false,
       }
   },
   methods:{
@@ -123,6 +134,9 @@ export default {
     },
     mypage(){
       this.$router.push({path:'/mypage'})
+    },
+    test(){
+      this.$router.push({path:'/test'})
     },
     admin(){
       this.$router.push({path:'/admin'})
